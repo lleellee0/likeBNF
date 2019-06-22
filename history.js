@@ -1,4 +1,4 @@
-let request = require('request');
+const request = require('request');
 
 const getHistory = (symbol, from, to) => {
     return new Promise((resolve, reject) => {
