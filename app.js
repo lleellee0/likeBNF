@@ -10,7 +10,7 @@ const main = async () => {
     history_arr = history.calcMovingAverage25(history_arr);
     history_arr = history.calcDifferenceRate(history_arr);
 
-    console.log(history_arr[history_arr.length - 1]);
+    console.log(history_arr[history_arr.length-1]);
 }
 
 main();
