@@ -1,4 +1,4 @@
-let request = require('request');
+const request = require('request');
 
 const getHistory = (symbol, from, to) => {
     return new Promise((resolve, reject) => {
@@ -37,8 +37,11 @@ const transferObjToArr = (history_obj) => {
         obj.low_price = history_obj.l[i];
         obj.open_price = history_obj.o[i];
         obj.timestamp = history_obj.t[i];
+        obj.date = new Date(obj.timestamp* 1000);
         obj.volume = history_obj.v[i];  // 사실 지금 하려는거에 볼륨은 필요 없긴하다.
-        history_arr.push(obj);
+        // 2019년 6월 16일이 버그인지 일요일인데 거래가 있는걸로 나와있음 ㅡㅡ 그거 제외하기 위한 코드
+        if(obj.date.getDay() !== 0 && obj.date.getDay() !== 6)  // 0은 일요일, 6은 토요일
+            history_arr.push(obj);
     }
 
     return history_arr;
@@ -49,7 +52,7 @@ const calcMovingAverage25 = (history_arr) => {
     for(let i = 24; i < history_arr.length; i++) {
         let sum = 0;
         for(let j = 0; j < 25; j++) {
-            sum += history_arr[i-j].close_price;
+            sum += history_arr[i-24+j].close_price;
         }
         history_arr[i].ma25 = sum / 25;
     }
