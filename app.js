@@ -9,6 +9,7 @@ const target_profit = 3;
 const kospi50_arr = [{name : 'KB금융', symbol : '43413'}, {name : 'KT', symbol : '43507'}, {name : 'KT&G', symbol : '43480'}, {name : 'LG', symbol : '43508'}, {name : 'LG Electronics', symbol : '43348'}, {name : 'LG디스플레이', symbol : '43463'}, {name : 'LG생활건강', symbol : '43521'}, {name : 'LG유플러스', symbol : '43492'}, {name : 'LG화학', symbol : '43424'}, {name : 'S-oil', symbol : '43473'}, {name : 'SK Telecom', symbol : '43472'}, {name : 'SK그룹', symbol : '43520'}, {name : 'SK이노베이션', symbol : '43404'}, {name : 'SK하이닉스', symbol : '43430'}, {name : 'Woori Financial', symbol : '1131302'}, {name : '강원랜드', symbol : '43422'}, {name : '고려아연', symbol : '43381'}, {name : '기아차', symbol : '43460'}, {name : '기업은행', symbol : '43542'}, {name : '네이버 주식회사', symbol : '43493'}, {name : '넷마블', symbol : '1010663'}, {name : '롯데쇼핑', symbol : '43383'}, {name : '롯데케미칼', symbol : '43374'}, {name : '삼성SDI', symbol : '43450'}, {name : '삼성물산', symbol : '43477'}, {name : '삼성바이오로직스', symbol : '993256'}, {name : '삼성생명', symbol : '43428'}, {name : '삼성에스디에스', symbol : '948394'}, {name : '삼성전기', symbol : '43350'}, {name : '삼성전자', symbol : '43433'}, {name : '삼성화재해상보험', symbol : '43370'}, {name : '셀트리온', symbol : '979618'}, {name : '신한지주', symbol : '43453'}, {name : '아모레G', symbol : '43443'}, {name : '아모레퍼시픽', symbol : '43416'}, {name : '엔씨소프트', symbol : '43448'}, {name : '이마트', symbol : '44089'}, {name : '카카오', symbol : '979247'}, {name : '코웨이', symbol : '43524'}, {name : '포스코', symbol : '43531'}, {name : '하나금융지주', symbol : '43378'}, {name : '한국전력', symbol : '43525'}, {name : '한국타이어', symbol : '44101'}, {name : '한미사이언스', symbol : '43783'}, {name : '현대건설', symbol : '43371'}, {name : '현대글로비스', symbol : '43379'}, {name : '현대모비스', symbol : '43398'}, {name : '현대제철', symbol : '43400'}, {name : '현대중공업', symbol : '43541'}, {name : '현대차', symbol : '43399'}];
 
 let webString = "데이터 준비중입니다.";
+let date = new Date();
 
 const getIssueObject = async (name, symbol, from_time) => {
     return new Promise(async (resolve, reject) => {
@@ -72,12 +73,12 @@ const main = async () => {
 
     }
     console.log(webString);
-
+    date = new Date();
     main();
 }
 
 app.get('/', (req, res) => {
-    res.send(`new Date()에 최신화되었습니다.<br>아래 데이터들은 괴리율을 기준으로 오름차순 정렬되어있습니다.<br>` + webString);
+    res.send(`${date}에 최신화되었습니다.<br>아래 데이터들은 괴리율을 기준으로 오름차순 정렬되어있습니다.<br>` + webString);
 });
 const server = app.listen(3000, () => { 
     console.log('Server is running!');
