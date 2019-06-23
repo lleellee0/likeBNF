@@ -72,6 +72,17 @@ module.exports = {
 
 // 그래서 아래 코드로 텍스트를 만들어버렸음.
 
+let name_and_symbol_array = [];
+
+let name_dom_arr = document.querySelectorAll ('#marketInnerContent .plusIconTd a');
+for(let i = 0; i < name_dom_arr.length; i++)
+    name_and_symbol_array.push({name:name_dom_arr[i].innerText});
+
+
+let symbol_dom_arr = document.querySelectorAll ('#marketInnerContent .plusIconTd span');
+for(let i = 0; i < symbol_dom_arr.length; i++)
+    name_and_symbol_array[i].symbol = symbol_dom_arr[i].getAttribute('data-id');
+
 let text = "";
 text += "[";
 for(let i = 0; i < name_and_symbol_array.length; i++) {
@@ -88,3 +99,30 @@ for(let i = 0; i < name_and_symbol_array.length; i++) {
 }
 text += "]";
 
+// ETF를 긁어오기 위해서는 아래 코드 사용
+let name_and_symbol_array = [];
+
+let name_dom_arr = document.querySelectorAll ('#etfs .plusIconTd a');
+for(let i = 0; i < name_dom_arr.length; i++)
+    name_and_symbol_array.push({name:name_dom_arr[i].innerText});
+
+
+let symbol_dom_arr = document.querySelectorAll ('#etfs .plusIconTd span');
+for(let i = 0; i < symbol_dom_arr.length; i++)
+    name_and_symbol_array[i].symbol = symbol_dom_arr[i].getAttribute('data-id');
+
+let text = "";
+text += "[";
+for(let i = 0; i < name_and_symbol_array.length; i++) {
+    text += "{";
+    text += "name : '";
+    text += name_and_symbol_array[i].name;
+    text += "'";
+    text += ", ";
+    text += "symbol : '";
+    text += name_and_symbol_array[i].symbol;
+    text += "'";
+    text += "}";
+    text += ", ";
+}
+text += "]";

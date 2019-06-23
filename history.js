@@ -7,6 +7,7 @@ const getHistory = (symbol, from, to) => {
                 console.log('error:', error);
                 return;
             }
+            if(body == undefined) return;
             body = JSON.parse(body);
             resolve(body);
         });
