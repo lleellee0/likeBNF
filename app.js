@@ -65,7 +65,7 @@ const main = async (stocks_arr) => {
         console.log(`5일내 ${target_profit}%상승    : ${issue_obj.in_5_days.success_count}%(+${floor2Digits(issue_obj.in_5_days.profit_rate)}%)`);
         console.log(`7일내 ${target_profit}%상승    : ${issue_obj.in_7_days.success_count}%(+${floor2Digits(issue_obj.in_7_days.profit_rate)}%)`);
 
-        webString += `종목                : ${issue_obj.name}<br>`;
+        webString = `종목                : ${issue_obj.name}<br>`;
         webString += `현재가격           : ${issue_obj.price}<br>`;
         webString += `25일이동평균가격    : ${issue_obj.ma25}<br>`;
         webString += `현재괴리율         : ${floor2Digits(issue_obj.difference_rate)}%<br>`;
@@ -87,4 +87,4 @@ const server = app.listen(3000, () => {
 });
 
 
-main(krx100_arr);
+main([{name : '한진칼', symbol : '44107'}]);
