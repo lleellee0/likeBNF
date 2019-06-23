@@ -87,4 +87,4 @@ const server = app.listen(3000, () => {
 });
 
 
-main([{name : '한진칼', symbol : '44107'}]);
+main(krx100_arr);
